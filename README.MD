@@ -21,43 +21,32 @@ Ensure you have the following installed:
 
 ---
 
-## 📂 Folder Structure  
-\`\`\`
-/dr-project
-│-- main.tf             # Main Terraform configuration
-│-- variables.tf        # Variables for Terraform
-│-- outputs.tf          # Outputs
-│-- README.md           # Project Documentation
-\`\`\`
-
----
-
 ## ⚡ Deployment Steps  
 
 ### 1️⃣ Configure AWS CLI  
 Run the following and enter your AWS credentials:  
-\`\`\`sh
+\`\`\`
 aws configure
 \`\`\`
 
 ### 2️⃣ Clone the Repository
-\`\`\`sh
+\`\`\`
 git clone <your-github-repo-url>
 cd dr-project
 \`\`\`
 
 ### 3️⃣ Initialize Terraform
-\`\`\`sh
+\`\`\`
 terraform init
 \`\`\`
 
 ### 4️⃣ Review the Execution Plan
-\`\`\`sh
+\`\`\`
 terraform plan
 \`\`\`
 
 ### 5️⃣ Apply Terraform to Deploy Infrastructure
-\`\`\`sh
+\`\`\`
 terraform apply -auto-approve
 \`\`\`
 ✅ Once applied, Terraform will create your AWS **VPC, EC2, RDS, S3, CloudWatch, and Auto Scaling resources**.  
@@ -68,19 +57,19 @@ terraform apply -auto-approve
 
 ### 🔹 Test EC2 Auto Recovery  
 Terminate an EC2 instance:
-\`\`\`sh
+\`\`\`
 aws ec2 terminate-instances --instance-ids <INSTANCE_ID> --region ap-south-1
 \`\`\`
 ✅ Auto Scaling should launch a new instance.  
 
 ### 🔹 Simulate RDS Failover  
-\`\`\`sh
+\`\`\`
 aws rds reboot-db-instance --db-instance-identifier <RDS_INSTANCE_ID> --region ap-south-1 --force-failover
 \`\`\`
 ✅ RDS should failover to standby.  
 
 ### 🔹 Check CloudWatch Alarms  
-\`\`\`sh
+\`\`\`
 aws cloudwatch describe-alarms --region ap-south-1 --query "MetricAlarms[*].{Name:AlarmName,State:StateValue}"
 \`\`\`
 ✅ CPU alerts should trigger as expected.  
@@ -89,7 +78,7 @@ aws cloudwatch describe-alarms --region ap-south-1 --query "MetricAlarms[*].{Nam
 
 ## 🧹 Cleanup (Destroy Infrastructure)  
 To remove all resources:
-\`\`\`sh
+\`\`\`
 terraform destroy -auto-approve
 \`\`\`
 
