@@ -88,6 +88,7 @@ terraform destroy -auto-approve
 - [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)  
 - [AWS CLI Documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2.html)  
 - [AWS Auto Scaling Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html)  
+- [Detailed Blog of Project](https://nirajbhagwat.blogspot.com/2025/03/automating-disaster-recovery-using.html)
 
 ---
 
